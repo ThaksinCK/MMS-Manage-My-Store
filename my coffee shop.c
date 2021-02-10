@@ -4,6 +4,14 @@
 char username[10] = "admin";
 char password[10] ="password";
 
+struct drink { //สร้างข้อมูลstructเพื่อจัดเก็บเครื่องดื่ม
+
+    char *name;
+    int price;
+
+};
+struct drink coffee[10]; //สร้างกาแฟในหมวดเครื่องดื่ม
+
 int main(){
 
     while(1){
@@ -69,7 +77,19 @@ void action_command(){
 }
 
 void add_new_coffe(){
-    printf("add new coffe\n");
+    clrscr();
+    int count = 0; //ตัวแปรสำหรับรับค่าตำแหน่งของอาเรย์เพื่อเช็คว่าลิสต์ของกาแฟถึงลำดับที่เท่าไหร่แล้ว
+    int i = 1; //ใช้ในการเปิดปิดwhileloop
+    while(i) {
+        while(coffee[count].name == NULL) { //ถ้า countที่0ว่างให้เพิ่มข้อมูลกาแฟกับราคาไปถ้าไม่ว่างให้ออกloopไป+1countแล้วกลับมาเช็คใหม่
+            printf("Name: ");
+            scanf("%s",&coffee[count].name);
+            printf("Price: ");
+            scanf("%d",&coffee[count].price);
+            i = 0; //ปิดwhileloop
+        }
+        count++; //เพิ่มค่าเพื่อกลับไปทำให้loopเป็นจริง
+    }
 }
 
 void coffe_list(){
